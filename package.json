@@ -1,0 +1,30 @@
+{
+  "name": "enki",
+  "version": "0.0.1",
+  "description": "manage translations based on formatmessage/ICU style data with an easy to use web frontend",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cospired/enki.git"
+  },
+  "keywords": [
+    "react-intl",
+    "icu",
+    "localisation",
+    "internationalisation",
+    "l10n",
+    "i18n"
+  ],
+  "author": "Dirk Haage <dirk@cospired.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cospired/enki/issues"
+  },
+  "homepage": "https://github.com/cospired/enki#readme"
+}
