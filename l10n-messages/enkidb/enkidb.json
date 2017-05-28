@@ -1,0 +1,22 @@
+{
+  "enki.details.title": {
+    "defaultMessage": "Details",
+    "description": "Title of the details area",
+    "id": "enki.details.title",
+    "meta": {
+      "createdAt": 1496006909402,
+      "end": {
+        "column": 3,
+        "line": 14
+      },
+      "file": "src/client/components/details.jsx",
+      "start": {
+        "column": 9,
+        "line": 10
+      },
+      "updatedAt": 1496006909402
+    },
+    "translations": {
+    }
+  }
+}
