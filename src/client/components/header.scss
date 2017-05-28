@@ -1,0 +1,25 @@
+@import '../styles/variables';
+
+.Header {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+  padding: 0 $spacing-base;
+  margin: $spacing-s 0;
+  color: $color-main;
+  background-color: $color-background-primary;
+  &__Logo {
+    text-transform: uppercase;
+    font-size: $font-size-l;
+    color: $color-hightlight;
+  }
+
+  &__AppTitle {
+    text-transform: uppercase;
+    font-size: $font-size-l;
+    letter-spacing: $font-size-l / 3;
+  }
+}

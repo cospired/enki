@@ -1,0 +1,14 @@
+@import './styles/variables';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, .Enki {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+}
+

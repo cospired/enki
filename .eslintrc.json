@@ -29,5 +29,8 @@
     "padded-blocks": 0,
     "react/jsx-curly-spacing": ["error", "always"],
     "space-in-parens": 0
+  },
+  "settings": {
+    "import/resolver": "webpack"
   }
 }

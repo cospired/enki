@@ -1,0 +1,9 @@
+@import '../styles/variables';
+
+.EnkiApp {
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: $spacing-s $spacing-base;
+}

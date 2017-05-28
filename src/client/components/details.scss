@@ -1,0 +1,21 @@
+@import '../styles/variables';
+
+.Details {
+
+  flex: 0 0 $details-height;
+  height: $details-height;
+  padding: $spacing-base;
+  margin: $spacing-s 0;
+  color: $color-main;
+  background-color: $color-background-primary;
+
+  &__Title {
+    font-size: $font-size-base;
+    letter-spacing: $font-size-base / 3;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: $spacing-s;
+
+  }
+}
