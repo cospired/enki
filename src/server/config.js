@@ -27,7 +27,7 @@ function loadConfigFile(story, configfile) {
 
 }
 
-function saveConfig(_filename) {
+function saveConfig(_config, _filename) {
 
   // todo
   // only write the fields that defer from default or are already in the config

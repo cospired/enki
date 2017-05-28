@@ -12,6 +12,7 @@ const {
 } = require('./icu');
 
 let Store;
+let Config;
 
 function loadMessageStore(dbDir, story) {
 
@@ -40,7 +41,7 @@ function writeMessageStore(store, dbDir, story) {
   return fs.outputJson(filename, store, options);
 }
 
-function updateStoreFromMessages(storeIn, messages, story) {
+function updateStoreFromMessages(storeIn, messages, _story) {
 
   const store = { ...storeIn };
   const newStore = {};
@@ -74,6 +75,17 @@ function updateStoreFromMessages(storeIn, messages, story) {
 
 function updateMessageTranslation(id, language, translation, story) {
 
+  if (!Store[id]) {
+    throw new Error('non-existent message id');
+  }
+  if (Config.languages.indexOf(language) === -1) {
+    throw new Error('unknown language');
+  }
+  const oldTranslation = Store[id].translations[language] || {};
+
+  Store[id].translations[language] = { ...oldTranslation, translation };
+
+  return writeMessageStore(Store, Config.dbDir, story);
 }
 
 function getMessageStore() {
@@ -143,6 +155,8 @@ function init(config, report) {
     src: 'db',
     title: 'initializing database'
   });
+
+  Config = config;
 
   return loadMessageStore(config.dbDir, story)
   .then( (messageStore) => {
