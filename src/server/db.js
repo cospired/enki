@@ -2,13 +2,13 @@ const path = require('path');
 
 const { mainStory, chalk } = require('storyboard');
 
-const { readJSON, writeJSON } = require('../../common/json');
+const { readJSON, writeJSON } = require('../common/json');
 
 const {
   loadMessages,
   createStoreEntryFromICU,
   updateStoreEntryFromICU
-} = require('./icu');
+} = require('./input/icu');
 
 let Store;
 let Config;

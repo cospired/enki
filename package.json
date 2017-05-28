@@ -37,6 +37,7 @@
     "commander": "^2.9.0",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
+    "json-stable-stringify": "^1.0.1",
     "lodash.merge": "^4.6.0",
     "storyboard": "^3.1.1",
     "storyboard-listener-console": "^3.1.1",
