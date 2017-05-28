@@ -1,6 +1,7 @@
-const fs = require('fs-extra');
 const merge = require('lodash.merge');
 const { mainStory, chalk } = require('storyboard');
+
+const { readJSON } = require('../common/json');
 
 const defaultConfig = {
   messageDir: 'messages',
@@ -23,7 +24,7 @@ function loadConfigFile(story, configfile) {
   }
   story.info('load', `using ${chalk.cyan.bold(filename)}`);
 
-  return fs.readJson(filename);
+  return readJSON(filename);
 
 }
 

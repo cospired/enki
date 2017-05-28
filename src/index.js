@@ -4,6 +4,8 @@ require('storyboard-preset-console');
 
 const pkg = require('../package.json');
 
+const { simpleReportPrinter } = require('./server/printers');
+
 const { getConfig } = require('./server/config');
 const db = require('./server/db');
 
@@ -29,7 +31,13 @@ getConfig(program.config)
 
   Config = config;
 
-  return db.init(Config, program.report);
+  return db.init(Config);
+})
+.then( () => {
+
+  if ( program.report) {
+    db.createReport(simpleReportPrinter);
+  }
 })
 .catch( (err) => {
 

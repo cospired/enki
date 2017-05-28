@@ -1,14 +1,15 @@
 const path = require('path');
-const fs = require('fs-extra');
 const glob = require('glob');
 
 const { mainStory, chalk } = require('storyboard');
+
+const { readJSON } = require('../../common/json');
 
 function loadMessageJson(messageFile, story) {
 
   story.debug('load', `loading ${chalk.cyan.bold(messageFile)}`);
 
-  return fs.readJson(messageFile).then( json =>
+  return readJSON(messageFile).then( json =>
 
     json.map( message => ({ ...message, messageFile }))
   );

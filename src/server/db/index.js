@@ -1,9 +1,8 @@
 const path = require('path');
-const fs = require('fs-extra');
 
 const { mainStory, chalk } = require('storyboard');
 
-const { simpleReportPrinter } = require('../printers');
+const { readJSON, writeJSON } = require('../../common/json');
 
 const {
   loadMessages,
@@ -20,7 +19,7 @@ function loadMessageStore(dbDir, story) {
 
   story.info('db', `Reading file ${chalk.cyan.bold(filename)}...`);
 
-  return fs.readJson(filename)
+  return readJSON(filename)
   .catch( (_err) => {
 
     story.warn('db', 'couldnt load message store, starting from scratch');
@@ -34,11 +33,8 @@ function writeMessageStore(store, dbDir, story) {
   const filename = path.resolve(dbDir, './enkidb.json');
 
   story.info('db', `saving file ${chalk.cyan.bold(filename)}...`);
-  const options = {
-    spaces: 2
-  };
 
-  return fs.outputJson(filename, store, options);
+  return writeJSON(filename, store);
 }
 
 function updateStoreFromMessages(storeIn, messages, _story) {
@@ -93,8 +89,10 @@ function getMessageStore() {
   return Store;
 }
 
-function createReport(store, languages, reportPrinter) {
+function createReport(reportPrinter) {
 
+  const store = Store;
+  const languages = Config.languages;
   const keys = Object.keys(store);
   const stats = keys.reduce( (memoIn, key) => {
 
@@ -149,7 +147,7 @@ function createReport(store, languages, reportPrinter) {
   reportPrinter(stats);
 }
 
-function init(config, report) {
+function init(config) {
 
   const story = mainStory.child({
     src: 'db',
@@ -174,24 +172,15 @@ function init(config, report) {
   .then( (messageStore) => {
 
     Store = messageStore;
-    story.debug('db', 'store', { attach: Store });
-    createReport(Store, config.languages, simpleReportPrinter);
+    story.close();
 
     return writeMessageStore(Store, config.dbDir, story);
-  })
-  .catch( (err) => {
-
-    if (report) {
-      // print report on current store before exiting
-      createReport(Store, config.languages, simpleReportPrinter);
-    }
-    throw err;
-  })
-  .then(() => story.close());
+  });
 }
 
 module.exports = {
   init,
   getMessageStore,
-  updateMessageTranslation
+  updateMessageTranslation,
+  createReport
 };
