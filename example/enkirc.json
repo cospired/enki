@@ -1,7 +1,0 @@
-{
-  "messageDir": "example/messages",
-  "dbDir": "example/enkidb",
-  "localesDir": "example/output",
-  "defaultLanguage": "en",
-  "languages": ["en","de","es","fr","ru"]
-}

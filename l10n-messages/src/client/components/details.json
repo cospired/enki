@@ -1,0 +1,16 @@
+[
+  {
+    "id": "enki.details.title",
+    "description": "Title of the details area",
+    "defaultMessage": "Details",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 10,
+      "column": 9
+    },
+    "end": {
+      "line": 14,
+      "column": 3
+    }
+  }
+]

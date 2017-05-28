@@ -1,0 +1,13 @@
+{
+  "appTitle": "Enki Translation Manager",
+  "messageDir": "l10n-messages/src",
+  "dbDir": "l10n-messages/enkidb",
+  "localesDir": "public/assets/locales",
+  "output": {
+    "format": ["react-intl"],
+    "sortKeys": "true",
+    "jsonOptions": { "space": 2, "trailingNewline": true }
+  },
+  "defaultLanguage": "en",
+  "languages": ["en","de","es","fr","ru"]
+}
