@@ -1,7 +1,8 @@
 {
-  "messageDir": "example/messages",
-  "dbDir": "example/enkidb",
-  "localesDir": "example/output",
+  "appTitle": "Enki Translation Manager",
+  "messageDir": "l10n-messages/src",
+  "dbDir": "l10n-messages/enkidb",
+  "localesDir": "public/assets/locales",
   "output": {
     "format": ["react-intl"],
     "sortKeys": "true",
