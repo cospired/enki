@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "hapi"
+  ],
+  "rules": {
+    "comma-dangle": ["warn", "never"],
+    "hapi/hapi-scope-start": "warn",
+    "import/first": 0,
+    "import/newline-after-import": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "ignore"
+      }
+    ],
+    "newline-before-return": "warn",
+    "no-unused-vars": [ "warn", {
+      "args": "all",
+      "argsIgnorePattern": "^_",
+      "vars": "all"
+    }],
+    "padded-blocks": 0,
+    "react/jsx-curly-spacing": ["error", "always"],
+    "space-in-parens": 0
+  }
+}
