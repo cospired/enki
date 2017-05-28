@@ -2,11 +2,6 @@
   "messageDir": "example/messages",
   "dbDir": "example/enkidb",
   "localesDir": "example/output",
-  "output": {
-    "format": ["react-intl"],
-    "sortKeys": "true",
-    "jsonOptions": { "space": 2, "trailingNewline": true }
-  },
   "defaultLanguage": "en",
   "languages": ["en","de","es","fr","ru"]
 }
