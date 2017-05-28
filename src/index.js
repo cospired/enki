@@ -5,6 +5,7 @@ require('storyboard-preset-console');
 const pkg = require('../package.json');
 
 const { simpleReportPrinter } = require('./server/printers');
+const { createLanguageFile } = require('./server/output/react-intl');
 
 const { getConfig } = require('./server/config');
 const db = require('./server/db');
@@ -35,9 +36,39 @@ getConfig(program.config)
 })
 .then( () => {
 
+  db.createReport(simpleReportPrinter);
+
   if ( program.report) {
-    db.createReport(simpleReportPrinter);
+    mainStory.info('exit', 'Reporting mode, exiting now...');
+    process.exit(0);
   }
+})
+.then( () => {
+
+  // we are generating the files once on startup and then with every change.
+  const messages = db.getMessageStore();
+
+  return Promise.all(Config.languages.map(
+    language => createLanguageFile(
+
+      messages,
+      language,
+      (language === Config.defaultLanguage),
+      Config.localesDir
+    )
+  ));
+
+})
+.then( () => {
+
+  if ( program.generate) {
+    mainStory.info('exit', 'Generation mode, exiting now...');
+    process.exit(0);
+  }
+})
+.then( () => {
+
+  // fire up the server!
 })
 .catch( (err) => {
 
