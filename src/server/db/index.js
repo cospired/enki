@@ -11,6 +11,8 @@ const {
   updateStoreEntryFromICU
 } = require('./icu');
 
+let Store;
+
 function loadMessageStore(dbDir, story) {
 
   const filename = path.resolve(dbDir, './enkidb.json');
@@ -37,6 +39,7 @@ function writeMessageStore(store, dbDir, story) {
 
   return fs.outputJson(filename, store, options);
 }
+
 function updateStoreFromMessages(storeIn, messages, story) {
 
   const store = { ...storeIn };
@@ -69,26 +72,55 @@ function updateStoreFromMessages(storeIn, messages, story) {
   return newStore;
 }
 
+function updateMessageTranslation(id, language, translation, story) {
+
+}
+
+function getMessageStore() {
+
+  return Store;
+}
+
 function createReport(store, languages, reportPrinter) {
 
   const keys = Object.keys(store);
-  const stats = keys.reduce( (memo, key) => {
+  const stats = keys.reduce( (memoIn, key) => {
 
+    const memo = { ...memoIn };
+    const message = store[key];
+    if (message.meta.deletedAt) {
+      memo.unused += 1;
+
+      return memo; // we are not checking translations for unused messages
+    }
+
+    memo.keys += 1;
     languages.forEach( (lang) => {
 
-      if (key[lang]) {
+      const translation = message.translations[lang];
+
+      if (translation) {
         ['message', 'fuzzy', 'whitelist'].forEach( (s) => {
 
-          if (key[lang][s]) {
-            stats[lang][s] += 1;
+          if (translation[s]) {
+            memo.languages[lang][s] += 1;
           }
         });
+
+        // TODO: this needs more sophisticated rules with translation inheritance
+        if (translation.fuzzy || (!translation.message && !translation.whitelist) ) {
+          memo.languages[lang].uptodate = false;
+        }
+      } else {
+        memo.languages[lang].uptodate = false;
       }
     });
 
     return memo;
   }, {
-    keys: keys.length,
+    keys: 0,
+    unused: 0,
+    uptodate: true,
     languages: languages.reduce( (memo, l) =>
 
       ({
@@ -96,15 +128,14 @@ function createReport(store, languages, reportPrinter) {
         [l]: {
           fuzzy: 0,
           whitelist: 0,
-          message: 0
+          message: 0,
+          uptodate: true
         } })
       , {})
   });
 
   reportPrinter(stats);
 }
-
-let Store;
 
 function init(config, report) {
 
@@ -131,7 +162,6 @@ function init(config, report) {
     Store = messageStore;
     story.debug('db', 'store', { attach: Store });
     createReport(Store, config.languages, simpleReportPrinter);
-    story.close();
 
     return writeMessageStore(Store, config.dbDir, story);
   })
@@ -141,11 +171,13 @@ function init(config, report) {
       // print report on current store before exiting
       createReport(Store, config.languages, simpleReportPrinter);
     }
-    story.close();
     throw err;
-  });
+  })
+  .then(() => story.close());
 }
 
 module.exports = {
-  init
+  init,
+  getMessageStore,
+  updateMessageTranslation
 };

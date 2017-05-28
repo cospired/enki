@@ -72,11 +72,10 @@ function loadMessages(messageDir) {
       .then( messages => checkDuplicates(messages, story))
       .then( (messages) => {
 
-        story.close();
-
         resolve( messages );
       })
-      .catch(errPromise => reject(errPromise));
+      .catch(errPromise => reject(errPromise))
+      .then(() => story.close());
     });
 
   });

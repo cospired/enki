@@ -18,6 +18,14 @@
 
 * mergeWithICUMessage
 
+* updateMessageTranslation -> always get the full translation object
+  * set translation
+    * set updatedAt
+    * unset fuzzy
+  * unset translation
+    * set deletedAt
+  * set whitelist
+  * set inheritFrom
 
 ## icu
 
@@ -25,3 +33,8 @@
   * path not found
   * found duplicate message
   * found invalid message
+
+## exit codes
+
+* if duplicate messages, exit code >0
+* if any language needs attention and in report mode, exit code >0

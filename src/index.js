@@ -16,6 +16,7 @@ process.on('SIGINT', () => {
 program
   .version(pkg.version)
   .option('-r, --report', 'run report and exit')
+  .option('-g, --generate', 'generate language files')
   .option('-c, --config [file]', 'specify Enki config file [.enkirc.json]', '.enkirc.json')
   .parse(process.argv);
 
@@ -30,10 +31,6 @@ getConfig(program.config)
 
   return db.init(Config, program.report);
 })
-// .then( (test) => {
-
-//   console.log(Config, test);
-// })
 .catch( (err) => {
 
   mainStory.error('startup', 'something went wrong', { attach: err });

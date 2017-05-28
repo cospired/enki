@@ -45,16 +45,20 @@ function getConfig(filename ) {
 
     const config = merge({}, defaultConfig, json);
     story.info('merge', 'config:', { attach: config });
-    story.close();
 
     return config;
   })
   .catch( (_err) => {
 
     story.warn('merge', 'no config found, using default config');
-    story.close();
 
     return defaultConfig;
+  })
+  .then((config) => {
+
+    story.close();
+
+    return config;
   });
 }
 
