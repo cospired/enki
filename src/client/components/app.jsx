@@ -11,8 +11,8 @@ import fr from 'react-intl/locale-data/fr';
 import ru from 'react-intl/locale-data/ru';
 // for dev
 
-import config from '../../../example/enkirc.json';
-import messages from '../../../example/enkidb/enkidb.json';
+import config from '../../../enkirc.json';
+import Messages from '../../../l10n-messages/enkidb/enkidb.json';
 
 // Components
 
@@ -29,8 +29,8 @@ class EnkiApp extends React.Component {
     super(props);
     this.state = {
       config,
-      messages,
-      selectedMessage: null
+      messages: Messages,
+      selectedMessage: Messages['enki.details.title']
     };
     this.displayName = 'EnkiApp';
   }
@@ -41,6 +41,8 @@ class EnkiApp extends React.Component {
 
     const { appTitle } = this.state.config;
 
+    const { messages, selectedMessage } = this.state;
+
     const intlProps = {
       locale: navigator ? navigator.languages[0] : 'en'
     };
@@ -49,13 +51,12 @@ class EnkiApp extends React.Component {
       <IntlProvider { ...intlProps }>
         <div className={ cn() } >
           <Header appTitle={ appTitle } />
-          <Translations />
-          <Details />
+          <Translations messages={ messages } />
+          <Details message={ selectedMessage } />
         </div>
       </IntlProvider>
     );
   }
 }
-
 
 export default EnkiApp;

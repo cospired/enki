@@ -1,0 +1,114 @@
+[
+  {
+    "id": "enki.details.title",
+    "description": "Title of the details area",
+    "defaultMessage": "Details",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 16,
+      "column": 9
+    },
+    "end": {
+      "line": 20,
+      "column": 3
+    }
+  },
+  {
+    "id": "enki.details.noMessage",
+    "description": "Hint showing in the details area when no message is selected",
+    "defaultMessage": "No message selected",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 21,
+      "column": 13
+    },
+    "end": {
+      "line": 25,
+      "column": 3
+    }
+  },
+  {
+    "id": "enki.details.description",
+    "description": "title for the description/context of the message",
+    "defaultMessage": "Description",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 26,
+      "column": 15
+    },
+    "end": {
+      "line": 30,
+      "column": 3
+    }
+  },
+  {
+    "id": "enki.details.usage",
+    "description": "title for the usage of the message (timestamps for create, update, delete)",
+    "defaultMessage": "Usage",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 31,
+      "column": 9
+    },
+    "end": {
+      "line": 35,
+      "column": 3
+    }
+  },
+  {
+    "id": "enki.details.since",
+    "description": "when the message was created",
+    "defaultMessage": "first used {date}",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 36,
+      "column": 9
+    },
+    "end": {
+      "line": 40,
+      "column": 3
+    }
+  },
+  {
+    "id": "enki.details.until",
+    "description": "when the message was deleted",
+    "defaultMessage": "until {date}",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 41,
+      "column": 9
+    },
+    "end": {
+      "line": 45,
+      "column": 3
+    }
+  },
+  {
+    "id": "enki.details.update",
+    "description": "when the message was last updated/changed",
+    "defaultMessage": "(last updated {date})",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 46,
+      "column": 10
+    },
+    "end": {
+      "line": 50,
+      "column": 3
+    }
+  },
+  {
+    "id": "enki.details.source",
+    "description": "source of the message in the code",
+    "defaultMessage": "Source",
+    "file": "src/client/components/details.jsx",
+    "start": {
+      "line": 51,
+      "column": 10
+    },
+    "end": {
+      "line": 55,
+      "column": 3
+    }
+  }
+]

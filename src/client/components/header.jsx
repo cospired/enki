@@ -15,7 +15,7 @@ function Header({
   return (
     <div className={ cn() } >
       <div className={ cn('Logo') }>
-        Enki
+        {'<enki/>'}
       </div>
       <div className={ cn('AppTitle') }>
         { appTitle }

@@ -1,0 +1,10 @@
+{
+  "enki.details.title": "Details",
+  "enki.details.noMessage": "No message selected",
+  "enki.details.description": "Description",
+  "enki.details.since": "first used {date}",
+  "enki.details.until": "until {date}",
+  "enki.details.update": "(last updated {date})",
+  "enki.details.usage": "Usage",
+  "enki.details.source": "Source"
+}

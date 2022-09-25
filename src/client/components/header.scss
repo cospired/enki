@@ -12,13 +12,14 @@
   color: $color-main;
   background-color: $color-background-primary;
   &__Logo {
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-size: $font-size-l;
+    font-family: $font-family-monospace;
     color: $color-hightlight;
   }
 
   &__AppTitle {
-    text-transform: uppercase;
+    font-style: small-caps;
     font-size: $font-size-l;
     letter-spacing: $font-size-l / 3;
   }

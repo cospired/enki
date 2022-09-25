@@ -10,12 +10,43 @@
   background-color: $color-background-primary;
 
   &__Title {
-    font-size: $font-size-base;
-    letter-spacing: $font-size-base / 3;
-    text-transform: uppercase;
+    font-size: $font-size-l;
+    letter-spacing: $font-size-l / 3;
+    font-variant: small-caps;
     text-align: center;
     margin-top: 0;
-    margin-bottom: $spacing-s;
+    margin-bottom: $spacing-l;
+  }
 
+  &__Hint {
+    font-size: $font-size-xl;
+    color: $color-hightlight;
+    letter-spacing: $font-size-xl / 3;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: $spacing-xl;
+  }
+
+  &__Details {
+    display: table;
+  }
+
+  &__Row {
+    display: table-row;
+  }
+
+  &__HeaderCell, &__Cell {
+    display: table-cell;
+    padding-bottom: $spacing-s;
+  }
+
+  &__HeaderCell {
+    font-variant: small-caps;
+    font-weight: $font-weight-bold;
+    padding-right: $spacing-l;
+  }
+
+  &__Lines {
+    font-style: italic;
   }
 }
